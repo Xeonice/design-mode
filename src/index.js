@@ -1,31 +1,31 @@
-class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
+class jQuery {
+    constructor(selector) {
+        let slice = Array.prototype.slice;
+        let dom = slice.call(document.querySelectorAll(selector));
+        let len = dom ? dom.length : 0;
+        for(let i = 0; i < len; i++) {
+            this[i] = dom[i];
+        }
+        this.length = len;
+        this.selector = selector || "";
     }
-    eat () {
-        alert(`${this.name} eat something`);
+    append(node) {
+        // ....
     }
-    speak() {
-        alert(`My name is ${this.name}, age ${this.age}`);
+    addClass(name) { 
+
     }
+    html(data) {
+
+    }
+    //此处省略 N 个 API
+
 }
+window.$ = function (selector) {
+    return new jQuery(selector);
+};
 
-//继承
-class Student extends Person {
-    constructor (name, age, number) {
-        super(name, age);//交给父类构造函数
-        this.number = number;//子类单独处理
-    }
-    study() {
-        alert(`${this.name} study ${this.number}`);
-    }
-}
-
-let xiaoming = new Student("xiaoming", 10, "A1");
-xiaoming.study();
-xiaoming.eat();
-
-let xiaohong = new Student("xiaohong", 11, "A2");
-xiaohong.study();
-xiaohong.eat();
+var $p = $("p");
+console.log($p);
+console.log(typeof($p));
+console.log($p.addClass);
